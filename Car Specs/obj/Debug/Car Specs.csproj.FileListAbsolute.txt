@@ -1,0 +1,61 @@
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\App.xbf
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\MainPage.xbf
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Car Specs.xr.xml
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Car Specs.exe
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Car Specs.pdb
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\resources.pri
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\AppxManifest.xml
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Car Specs.build.appxrecipe
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\App.g.i.cs
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\App.g.cs
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\MainPage.g.i.cs
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\MainPage.g.cs
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\XamlTypeInfo.g.cs
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\App.xaml
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\App.xbf
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\XamlSaveStateFile.xml
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\MainPage.xaml
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\MainPage.xbf
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Car Specs.exe
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Car Specs.pdb
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\priconfig.xml
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\priconfig.xml.intermediate
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\layout.resfiles
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\layout.resfiles.intermediate
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\resources.resfiles
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\resources.resfiles.intermediate
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\pri.resfiles
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\pri.resfiles.intermediate
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\qualifiers.txt
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\qualifiers.txt.intermediate
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\ProjectArchitectures.txt
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Newtonsoft.Json.dll
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Newtonsoft.Json.xml
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Car Specs.csprojResolveAssemblyReference.cache
+c:\users\connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Car Specs.csproj.GenerateResource.Cache
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\About.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\About.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\About.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\About.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\About.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Compare.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Compare.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Model.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Model.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Model.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Model.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Compare.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Compare.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Compare.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Model.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\Specs.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Specs.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Specs.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Specs.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\Specs.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\View.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\View.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\View.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Debug\View.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Debug\View.xbf

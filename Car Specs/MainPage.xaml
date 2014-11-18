@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="Car_Specs.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Car_Specs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="About" Click="AppBarButton_Click"/>
+                <AppBarButton Label="Help"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock HorizontalAlignment="Center" Text="Car Specs" Margin="0,0,0,15" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,81">
+            <StackPanel ScrollViewer.HorizontalScrollMode="Enabled">
+                <Button Content="Test Call" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+                <Grid Width="auto" Height="77" Margin="0,0,-0.333,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Width="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Make:"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Year"/>
+                    <TextBlock Grid.Column="2" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Make"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" Height="39" Text="2005" Margin="10,38,10,0" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="0" Height="39" Text="Audi" Margin="10,38,10,0" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="2" Grid.Row="0" Text="A4" Height="39" Margin="10,38,10,0" Grid.RowSpan="2"/>
+                    <Button Grid.Column="3" x:Name="searchMake" Content="Search" Margin="0.333,28,0,-9.333" Width="11" Height="56" Grid.RowSpan="2" />
+                </Grid>
+                <ScrollViewer Height="50" Margin="0,5,-0.333,0">
+                    <TextBlock x:Name="OutputView" FontSize="16" Height="50" TextWrapping="Wrap" />
+                </ScrollViewer>
+
+                <StackPanel Width="auto" Height="220">
+                    <ScrollViewer Height="221" Margin="0,0,-0.333,0">
+                        <ListView x:Name="listView1" Height="221">
+                            <TextBlock Text="Audi  A4" Tapped="TextBlock_Tapped"></TextBlock>
+                        </ListView>
+                    </ScrollViewer>
+
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+        <Grid  Height="63" Margin="0,463.667,0,0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="133.333"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <Button Grid.Row="0" Grid.Column="0"  Name="searchBTN" Background="DarkRed" Content="Search"  Margin="0,-10,0,-10.667" Width="134" Height="84" Grid.ColumnSpan="2"/>
+
+            <Button Grid.Column="0" Name="compareBTN" Content="Compare" Margin="133,-10,0,-9.667" Click="compareBTN_Click" Grid.ColumnSpan="3" Width="134" Height="83"/>
+            <Button Grid.Column="2" Name="viewBTN" Content="View" Margin="0.333,-10,0,-9.667" Width="133" Height="83" Click="view_Click"/>
+        </Grid>
+    </Grid>
+</Page>
