@@ -42,24 +42,15 @@
                 </StackPanel>
 
                 <StackPanel Width="auto" Height="58" Margin="0,10,-0.333,0">
-                    <TextBox x:Name="makeInput" Margin="0" Width="126" TextWrapping="Wrap" Text="2005" HorizontalAlignment="Left" Height="47"/>
-                    <Button x:Name="searchMake" Content="Search" Margin="0,-50,0,0" HorizontalAlignment="Right" />
+                    <TextBox x:FieldModifier="public"  x:Name="yearInput" Margin="0" Width="126" TextWrapping="Wrap" Text="2005" HorizontalAlignment="Left" Height="47"/>
+                    <Button x:Name="searchMake" Content="Search" Margin="0,-50,0,0" HorizontalAlignment="Right" Click="searchMake_Click" />
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Width="auto" Margin="0,102,0,92">
                 <ScrollViewer Height="335" Margin="0,0,-0.333,0">
-                    <ListView x:Name="listView1" Height="332">
-                        <TextBlock Text="Acura" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   MDX" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   NSX" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   RL" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   RSX" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   RL" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   RL" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   RL" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   RL" Tapped="TextBlock_Tapped"/>
-                        <TextBlock Text="   RL" Tapped="TextBlock_Tapped"/>
+                    <ListView x:FieldModifier="public" x:Name="listView1" Height="332">
+                        
                     </ListView>
                 </ScrollViewer>
 

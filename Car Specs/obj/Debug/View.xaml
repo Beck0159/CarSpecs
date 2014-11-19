@@ -42,24 +42,15 @@
                 </StackPanel>
 
                 <StackPanel Width="auto" Height="58" Margin="0,10,-0.333,0">
-                    <TextBox x:Name="makeInput" Margin="0" Width="126" TextWrapping="Wrap" Text="2005" HorizontalAlignment="Left" Height="47"/>
-                    <Button x:Name="searchMake" Content="Search" Margin="0,-50,0,0" HorizontalAlignment="Right" />
+                    <TextBox x:FieldModifier="public"  x:Name="yearInput" Margin="0" Width="126" TextWrapping="Wrap" Text="2005" HorizontalAlignment="Left" Height="47"/>
+                    <Button x:ConnectionId='4' x:Name="searchMake" Content="Search" Margin="0,-50,0,0" HorizontalAlignment="Right"                          />
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Width="auto" Margin="0,102,0,92">
                 <ScrollViewer Height="335" Margin="0,0,-0.333,0">
-                    <ListView x:Name="listView1" Height="332">
-                        <TextBlock x:ConnectionId='4' Text="Acura"                          />
-                        <TextBlock x:ConnectionId='5' Text="   MDX"                          />
-                        <TextBlock x:ConnectionId='6' Text="   NSX"                          />
-                        <TextBlock x:ConnectionId='7' Text="   RL"                          />
-                        <TextBlock x:ConnectionId='8' Text="   RSX"                          />
-                        <TextBlock x:ConnectionId='9' Text="   RL"                          />
-                        <TextBlock x:ConnectionId='10' Text="   RL"                          />
-                        <TextBlock x:ConnectionId='11' Text="   RL"                          />
-                        <TextBlock x:ConnectionId='12' Text="   RL"                          />
-                        <TextBlock x:ConnectionId='13' Text="   RL"                          />
+                    <ListView x:FieldModifier="public" x:Name="listView1" Height="332">
+                        
                     </ListView>
                 </ScrollViewer>
 

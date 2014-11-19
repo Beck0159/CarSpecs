@@ -11,7 +11,7 @@
   <mp:PhoneIdentity PhoneProductId="4748fbde-d9b7-4219-a161-f6f23810cc92" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Car Specs</DisplayName>
-    <PublisherDisplayName>Connor</PublisherDisplayName>
+    <PublisherDisplayName>Connor Becker</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
