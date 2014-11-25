@@ -191,10 +191,10 @@ namespace Car_Specs
                         Debug.WriteLine("   Model: " + modelStrings + "\r\n");
                         // dynamicly make a textblock
                         TextBlock newTB = new TextBlock();
-                        newTB.Name = modelStrings;
+                        newTB.Name = userInput;
                         newTB.Text = "  " + modelStrings;
                         newTB.Tapped += Onb2Click;
-                        newTB.Tag = modelID;
+                        newTB.Tag = makes;
                         // add the newly created TextBlock
                         listView1.Items.Add(newTB);
 
@@ -226,10 +226,13 @@ namespace Car_Specs
             TextBlock TB = sender as TextBlock;
             Debug.WriteLine(TB.Tag);
 
-            JCall.viewAllCars((string)TB.Tag);
+            //Call.viewAllCars((string)TB.Tag);
+            String names = ""+TB.Tag+","+TB.Text+","+TB.Name;
 
 
             // Send Tag to models page to use for query
+            Frame.Navigate(typeof(Model), names);
+
         }
     }
 }

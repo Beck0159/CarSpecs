@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Diagnostics;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
@@ -15,6 +17,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
 
@@ -30,9 +34,18 @@ namespace Car_Specs
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        // create httpClient
+        private HttpClient httpClient;
+
         public Specs()
         {
             this.InitializeComponent();
+
+            // create an instance of httpClient
+            httpClient = new HttpClient();
+            // Limit the max buffer size for the response so we don't get overwhelmed
+            httpClient.MaxResponseContentBufferSize = 256000;
+            httpClient.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -98,9 +111,57 @@ namespace Car_Specs
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            String id = e.Parameter.ToString();
+            Debug.WriteLine(id);
+
+            try
+            {
+                //
+                String responseBodyAsText;
+
+                HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/styles/" + id + "?view=full&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
+                response.EnsureSuccessStatusCode();
+                responseBodyAsText = await response.Content.ReadAsStringAsync();
+                responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
+
+                JObject results = JObject.Parse(responseBodyAsText);
+                Debug.WriteLine(results);
+
+
+                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
+                //int i = 0;
+                //foreach (var result in results["years"])
+                //{
+                //    string modelID = (string)result["id"];
+
+                //    int a = 0;
+                //    foreach (var styles in result["styles"])
+                //    {
+                //        var type1 = result["styles"][a];
+                //        string modelStrings = (string)type1["name"];
+                //        string carID = (string)type1["id"];
+                        
+                        
+                //        a++;
+                //    }
+
+                //    i++;
+                //}
+
+            }
+            catch (HttpRequestException hre)
+            {
+                //StatusText.Text = hre.ToString();
+            }
+            catch (Exception ex)
+            {
+                // For debugging
+                //StatusText.Text = ex.ToString();
+            }
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

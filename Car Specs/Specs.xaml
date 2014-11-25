@@ -31,7 +31,7 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="Car Title" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock x:Name="title" Text="Car Title" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
             <Button Content="Compare" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="248,0,23.833,0" Height="56" RenderTransformOrigin="0.5,0.5" Click="Button_Click"/>
 
         </StackPanel>

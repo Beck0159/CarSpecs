@@ -37,7 +37,6 @@
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,81">
             <StackPanel ScrollViewer.HorizontalScrollMode="Enabled">
-                <Button x:ConnectionId='4' Content="Test Call" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"                     />
                 <Grid Width="auto" Height="77" Margin="0,0,-0.333,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -53,20 +52,20 @@
 
                     <TextBlock Grid.Column="0" Grid.Row="0" Width="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Make:"/>
                     <TextBlock Grid.Column="1" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Year"/>
-                    <TextBlock Grid.Column="2" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Make"/>
-                    <TextBox Grid.Column="1" Grid.Row="0" Height="39" Text="2005" Margin="10,38,10,0" Grid.RowSpan="2"/>
-                    <TextBox Grid.Column="0" Height="39" Text="Audi" Margin="10,38,10,0" Grid.RowSpan="2"/>
-                    <TextBox Grid.Column="2" Grid.Row="0" Text="A4" Height="39" Margin="10,38,10,0" Grid.RowSpan="2"/>
-                    <Button Grid.Column="3" x:Name="searchMake" Content="Search" Margin="0.333,28,0,-9.333" Width="11" Height="56" Grid.RowSpan="2" />
+                    <TextBlock Grid.Column="2" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Model"/>
+                    <TextBox x:Name="year" Grid.Column="1" Grid.Row="0" Height="39" Text="2005" Margin="10,38,10,0" Grid.RowSpan="2"/>
+                    <TextBox x:Name="make" Grid.Column="0" Height="39" Text="Audi" Margin="10,38,10,0" Grid.RowSpan="2"/>
+                    <TextBox x:Name="model" Grid.Column="2" Grid.Row="0" Text="A4" Height="39" Margin="10,38,10,0" Grid.RowSpan="2"/>
+                    <Button x:ConnectionId='4' Grid.Column="3" x:Name="searchMake" Content="Search" Margin="0.333,28,0,-9.333" Width="11" Height="56" Grid.RowSpan="2"                          />
                 </Grid>
-                <ScrollViewer Height="50" Margin="0,5,-0.333,0">
-                    <TextBlock x:Name="OutputView" FontSize="16" Height="50" TextWrapping="Wrap" />
-                </ScrollViewer>
+               
+                <StackPanel Width="auto" Height="365" Margin="0,0,-0.333,0">
+                    <ListView x:Name="listViewTitle" Height="36" Margin="5,5,-0.333,0">
 
-                <StackPanel Width="auto" Height="220">
-                    <ScrollViewer Height="221" Margin="0,0,-0.333,0">
-                        <ListView x:Name="listView1" Height="221">
-                            <TextBlock x:ConnectionId='5' Text="Audi  A4"                          ></TextBlock>
+                    </ListView>
+                    <ScrollViewer Height="333" Margin="0,0,-0.333,0">
+                        <ListView x:Name="listView1" Height="315">
+                            
                         </ListView>
                     </ScrollViewer>
 
