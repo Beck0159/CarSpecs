@@ -86,6 +86,10 @@
     <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\SmallLogo.scale-240.png">
       <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>

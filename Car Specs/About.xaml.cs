@@ -125,7 +125,7 @@ namespace Car_Specs
 
         private void compareBTN_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(Compare));
         }
 
         private void view_Click(object sender, RoutedEventArgs e)

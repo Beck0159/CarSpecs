@@ -131,25 +131,46 @@ namespace Car_Specs
                 Debug.WriteLine(results);
 
 
-                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
-                //int i = 0;
-                //foreach (var result in results["years"])
-                //{
-                //    string modelID = (string)result["id"];
+                //Debug.WriteLine("Make:" + results["make"]["name"]);
 
-                //    int a = 0;
-                //    foreach (var styles in result["styles"])
-                //    {
-                //        var type1 = result["styles"][a];
-                //        string modelStrings = (string)type1["name"];
-                //        string carID = (string)type1["id"];
-                        
-                        
-                //        a++;
-                //    }
+                // All data we need for the key features
+                string make = results["make"]["name"].ToString();
+                string model = results["model"]["name"].ToString();
+                string engineDisplacement = results["engine"]["size"].ToString();
+                string engineCompresser = results["engine"]["compressorType"].ToString();
+                string mpgHighway = results["MPG"]["highway"].ToString();
+                string mpgCity = results["MPG"]["city"].ToString();
+                string carType = results["categories"]["vehicleStyle"].ToString();
+                string transmissionType = results["transmission"]["transmissionType"].ToString();
+                string transmissionSpeeds = results["transmission"]["numberOfSpeeds"].ToString();
+                string driveWheels = results["drivenWheels"].ToString();
 
-                //    i++;
-                //}
+                // Display key features
+                title.Text = make + " " + model;
+                CarType.Text = "Car Type: "+carType+", "+driveWheels;
+                Transmission.Text = "Transmission: "+transmissionSpeeds + " speed " + transmissionType;
+                EngineInfo.Text = "Engine: "+engineDisplacement + "L " + engineCompresser;
+                MPG.Text ="MPG City/Highway: "+ mpgCity + "/" + mpgHighway;
+
+                // Data needed for engine/transmission block
+                string compressionRatio = results["engine"]["compressionRatio"].ToString();
+                string fuelType = results["engine"]["fuelType"].ToString();
+                string horsepower = results["engine"]["horsepower"].ToString();
+                string torque = results["engine"]["torque"].ToString();
+                string valves = results["engine"]["totalValves"].ToString();
+                string configuration = results["engine"]["configuration"].ToString();
+                string engineCyliners = results["engine"]["cylinder"].ToString();
+
+                // display engine/transmission data
+                CompressionRatio.Text = "Compression Ratio: " + compressionRatio;
+                FuelType.Text = "Fuel: " + fuelType;
+                Horsepower.Text = "Horsepower: " + horsepower;
+                Torque.Text = "Torque: " + torque;
+                Valves.Text = "Total Valves: " + valves;
+                Configuration.Text = "Configuration: " + configuration;
+                Cylinders.Text = "Cylinders: " + engineCyliners;
+                Size.Text = "Size: " + engineDisplacement;
+                Debug.WriteLine("Coooool"+make+model+engineCompresser+engineCyliners+mpgCity+mpgHighway+carType);
 
             }
             catch (HttpRequestException hre)
