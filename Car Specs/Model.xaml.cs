@@ -19,6 +19,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
+using Windows.Storage;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -34,7 +36,8 @@ namespace Car_Specs
 
         // create httpClient
         private HttpClient httpClient;
-       
+
+        private string fileName;
 
         public Model()
         {
@@ -45,6 +48,8 @@ namespace Car_Specs
             // Limit the max buffer size for the response so we don't get overwhelmed
             httpClient.MaxResponseContentBufferSize = 256000;
             httpClient.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
+
+            fileName = "cars.xml";
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -140,7 +145,7 @@ namespace Car_Specs
                 foreach (var result in results["years"])
                 {
                     string modelID = (string)result["id"];
-                   
+
                     int a = 0;
                     foreach (var styles in result["styles"])
                     {
@@ -221,6 +226,28 @@ namespace Car_Specs
             // Send Tag to models page to use for query
             Frame.Navigate(typeof(Specs), TB.Tag);
 
+        }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+
+            var uri = new Uri(urlpayment);
+            // Set the option to show a warning
+            var options = new Windows.System.LauncherOptions();
+            options.TreatAsUntrusted = true;
+
+            // Launch the URI with a warning prompt
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri, options);
+
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+            }
         }
 
     }

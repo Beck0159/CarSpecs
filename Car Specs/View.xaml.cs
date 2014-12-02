@@ -234,5 +234,27 @@ namespace Car_Specs
             Frame.Navigate(typeof(Model), names);
 
         }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+
+            var uri = new Uri(urlpayment);
+            // Set the option to show a warning
+            var options = new Windows.System.LauncherOptions();
+            options.TreatAsUntrusted = true;
+
+            // Launch the URI with a warning prompt
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri, options);
+
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+            }
+        }
     }
 }

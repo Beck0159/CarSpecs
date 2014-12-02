@@ -1,12 +1,15 @@
 ﻿using Car_Specs.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,6 +31,8 @@ namespace Car_Specs
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        private string fileName;
+
         public Compare()
         {
             this.InitializeComponent();
@@ -35,6 +40,8 @@ namespace Car_Specs
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
+            fileName = "cars.xml";
         }
 
         /// <summary>
@@ -96,9 +103,11 @@ namespace Car_Specs
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+
+            await ReadData();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -121,6 +130,54 @@ namespace Car_Specs
         private void view_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(View));
+        }
+
+        private async Task ReadData()
+        {
+            try
+            {
+
+                string content = string.Empty;
+
+                var stream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(fileName);
+
+                using (StreamReader reader = new StreamReader(stream))
+                {
+
+                    content = await reader.ReadToEndAsync();
+                }
+
+                Debug.WriteLine(content);
+
+            }
+            catch (Exception ex)
+            {
+                // For debugging
+                Debug.WriteLine(ex.ToString());
+            }
+
+        }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+
+            var uri = new Uri(urlpayment);
+            // Set the option to show a warning
+            var options = new Windows.System.LauncherOptions();
+            options.TreatAsUntrusted = true;
+
+            // Launch the URI with a warning prompt
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri, options);
+
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+            }
         }
 
     }

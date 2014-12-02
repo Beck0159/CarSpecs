@@ -21,6 +21,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
+using Windows.UI.Xaml.Media.Imaging;
+using System.Runtime.Serialization;
+using Windows.Storage;
+using System.Threading.Tasks;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -34,12 +38,21 @@ namespace Car_Specs
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        // string list
+        private List<string> carID;
+        private string fileName;
+
+        public string id;
         // create httpClient
         private HttpClient httpClient;
 
         public Specs()
         {
             this.InitializeComponent();
+
+            // initialize data members
+            fileName = "cars.xml";
+            carID = new List<string>();
 
             // create an instance of httpClient
             httpClient = new HttpClient();
@@ -114,7 +127,7 @@ namespace Car_Specs
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
-            String id = e.Parameter.ToString();
+            id = e.Parameter.ToString();
             Debug.WriteLine(id);
 
             try
@@ -172,6 +185,16 @@ namespace Car_Specs
                 Size.Text = "Size: " + engineDisplacement;
                 Debug.WriteLine("Coooool"+make+model+engineCompresser+engineCyliners+mpgCity+mpgHighway+carType);
 
+
+
+                // call for this info https://api.edmunds.com/api/vehicle/v2/equipment/200477520?fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3
+                // interior and exterior specifications
+
+
+
+                displayPicture(id);
+
+
             }
             catch (HttpRequestException hre)
             {
@@ -181,6 +204,46 @@ namespace Car_Specs
             {
                 // For debugging
                 //StatusText.Text = ex.ToString();
+            }
+
+        }
+
+        public async void displayPicture(string id)
+        {
+            Debug.WriteLine("Display Image");
+
+            try
+            {
+
+                String responseBodyAsTextImage;
+
+                HttpResponseMessage response1 = await httpClient.GetAsync("https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=" + id + "&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
+                response1.EnsureSuccessStatusCode();
+                responseBodyAsTextImage = await response1.Content.ReadAsStringAsync();
+                responseBodyAsTextImage = responseBodyAsTextImage.Replace("<br>", Environment.NewLine); // Insert new lines
+                Debug.WriteLine(responseBodyAsTextImage);
+                
+                JArray imageResults = JArray.Parse(responseBodyAsTextImage);
+                Debug.WriteLine(imageResults);
+
+                string imageSource = imageResults[0]["photoSrcs"][1].ToString();
+                Debug.WriteLine(imageSource);
+
+                Uri uri = new Uri("http://media.ed.edmunds-media.com"+imageSource+"", UriKind.Absolute);
+                imagePlace.ImageSource = new BitmapImage(
+                    new Uri("http://media.ed.edmunds-media.com"+imageSource+"", UriKind.Absolute)
+                );
+                ProgressRing.IsActive = false;
+
+            }
+            catch (HttpRequestException hre)
+            {
+                //StatusText.Text = hre.ToString();
+            }
+            catch (Exception ex)
+            {
+                // For debugging
+                Debug.WriteLine( ex.ToString());
             }
 
         }
@@ -207,15 +270,46 @@ namespace Car_Specs
             Frame.Navigate(typeof(About));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            // add car id to list, add list to database
+
+            if (id != null)
+            {
+                carID.Add(id);
+                await WriteData();
+            }
+
+        }
+
+        private async Task WriteData()
+        {
+            try
+            {
+                var serializer = new DataContractSerializer(typeof(List<string>));
+
+                using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(fileName, CreationCollisionOption.GenerateUniqueName))
+                {
+
+                    serializer.WriteObject(stream, carID);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                // For debugging
+                Debug.WriteLine(ex.ToString());
+            }
+
+            // display toast message
             var toastNotifier = ToastNotificationManager.CreateToastNotifier();
             var toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
             var toastText = toastXml.GetElementsByTagName("text");
             (toastText[0] as XmlElement).InnerText = "Added To Compare Page";
             var toast = new ToastNotification(toastXml);
             toastNotifier.Show(toast);
+            Debug.WriteLine(carID[0]);
 
         }
 
@@ -224,6 +318,27 @@ namespace Car_Specs
             Frame.Navigate(typeof(View));
         }
 
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+
+            var uri = new Uri(urlpayment);
+            // Set the option to show a warning
+            var options = new Windows.System.LauncherOptions();
+            options.TreatAsUntrusted = true;
+
+            // Launch the URI with a warning prompt
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri, options);
+
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+            }
+        }
        
     }
 }
