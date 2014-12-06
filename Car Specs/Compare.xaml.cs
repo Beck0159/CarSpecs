@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -41,7 +42,7 @@ namespace Car_Specs
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
-            fileName = "cars.xml";
+            fileName = "ID.xml";
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Car_Specs
         {
             this.navigationHelper.OnNavigatedTo(e);
 
-            await ReadData();
+             await ReadXML();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -132,8 +133,23 @@ namespace Car_Specs
             Frame.Navigate(typeof(View));
         }
 
-        private async Task ReadData()
+        public async Task ReadXML()
         {
+            //List<CarID> carID;
+            //var deserializer = new DataContractSerializer(typeof(List<string>));
+            //string fileName = "ID.XML";\
+            List<Car_Specs.Specs.CarID> carID;
+            List<Car_Specs.Specs.CarID> test;
+            string fileName = "ID.XML";
+            //string newID = null;
+
+            string ID1 = null;
+            string ID2 = null;
+
+            carID = new List<Car_Specs.Specs.CarID>();
+
+            var deserializer = new DataContractSerializer(typeof(List<Car_Specs.Specs.CarID>));
+
             try
             {
 
@@ -144,17 +160,31 @@ namespace Car_Specs
                 using (StreamReader reader = new StreamReader(stream))
                 {
 
-                    content = await reader.ReadToEndAsync();
+                    //content = await reader.ReadToEndAsync();
+                    test = ((List<Car_Specs.Specs.CarID>)deserializer.ReadObject(stream));
+
                 }
+                Debug.WriteLine("Stored Car ID'S " + test[0].ID);
+                Debug.WriteLine("Stored Car ID'S " + test[1].ID);
 
-                Debug.WriteLine(content);
-
+                ID1 = test[0].ID;
+                ID2 = test[1].ID;
+             
             }
             catch (Exception ex)
             {
                 // For debugging
                 Debug.WriteLine(ex.ToString());
             }
+
+            DisplayData(ID1, ID2);
+
+        }
+
+        private void DisplayData(string Car1, string Car2)
+        {
+
+            Debug.WriteLine("Car 1 = " + Car1 + " Car 2 = " + Car2);
 
         }
 

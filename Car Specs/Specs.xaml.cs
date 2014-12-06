@@ -270,30 +270,71 @@ namespace Car_Specs
             Frame.Navigate(typeof(About));
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             // add car id to list, add list to database
 
             if (id != null)
             {
-                carID.Add(id);
-                await WriteData();
+                //carID.Add(id);
+                //WriteData();
+                //LocalStorage.WriteXML(id);
+                WriteXML(id);
+
+
+                // display toast message
+                    var toastNotifier = ToastNotificationManager.CreateToastNotifier();
+                    var toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
+                    var toastText = toastXml.GetElementsByTagName("text");
+                    (toastText[0] as XmlElement).InnerText = "Added To Compare Page";
+                    var toast = new ToastNotification(toastXml);
+                    toastNotifier.Show(toast);
+                    Debug.WriteLine(id);
             }
 
         }
 
-        private async Task WriteData()
+        public class CarID
         {
+            public String ID;
+        }
+
+        public async static void WriteXML(string id)
+        {
+
+            List<CarID> carID;
+            List<CarID> test;
+            string fileName = "ID.XML";
+            string newID = null;
+
+            carID = new List<CarID>();
+      
+
+            // Get current List 
+            // Add New ID To List
+            var deserializer = new DataContractSerializer(typeof(List<CarID>));
+
             try
             {
-                var serializer = new DataContractSerializer(typeof(List<string>));
 
-                using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(fileName, CreationCollisionOption.GenerateUniqueName))
+                string content = string.Empty;
+
+                var stream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(fileName);
+
+                using (StreamReader reader = new StreamReader(stream))
                 {
 
-                    serializer.WriteObject(stream, carID);
+                    //content = await reader.ReadToEndAsync();
+                    test = ((List<CarID>)deserializer.ReadObject(stream));
+                    
                 }
+                Debug.WriteLine("Stored Car ID'S " + test[0].ID);
+                Debug.WriteLine("Stored Car ID'S " + test[1].ID);
+         
 
+                //Debug.WriteLine(content);
+
+                newID = test[0].ID;
 
             }
             catch (Exception ex)
@@ -302,14 +343,34 @@ namespace Car_Specs
                 Debug.WriteLine(ex.ToString());
             }
 
-            // display toast message
-            var toastNotifier = ToastNotificationManager.CreateToastNotifier();
-            var toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
-            var toastText = toastXml.GetElementsByTagName("text");
-            (toastText[0] as XmlElement).InnerText = "Added To Compare Page";
-            var toast = new ToastNotification(toastXml);
-            toastNotifier.Show(toast);
-            Debug.WriteLine(carID[0]);
+            CarID overview = new CarID();
+            overview.ID = id;
+
+            CarID testing = new CarID();
+            testing.ID = newID;
+
+            carID.Add(overview);
+            carID.Add(testing);
+
+            // Save List
+            try
+           {
+                var serializer = new DataContractSerializer(typeof(List<CarID>));
+
+                using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(fileName, CreationCollisionOption.ReplaceExisting))
+                {
+
+                    serializer.WriteObject(stream, carID);
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                // For debugging
+                Debug.WriteLine(ex.ToString());
+            }
 
         }
 

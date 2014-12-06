@@ -72,6 +72,7 @@
     </RootType>
     <RootType FullName="Car_Specs.About" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="Background" />
       <RootProperty Name="ClosedDisplayMode" />
       <RootProperty Name="SecondaryCommands" />
     </RootType>

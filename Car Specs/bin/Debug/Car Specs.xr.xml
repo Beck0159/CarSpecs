@@ -34,9 +34,9 @@
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Margin" />
       <RootProperty Name="Children" />
-      <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
@@ -61,13 +61,13 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Style" />
       <RootProperty Name="CharacterSpacing" />
-      <RootProperty Name="Width" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="FontStyle" />
-      <RootProperty Name="Foreground" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Foreground" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Car_Specs.About" />
@@ -80,15 +80,22 @@
       <RootProperty Name="Label" />
       <RootEvent Name="Click" />
     </RootType>
-    <RootType FullName="Car_Specs.Compare" />
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="HorizontalScrollBarVisibility" />
+      <RootProperty Name="Content" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="HorizontalScrollBarVisibility" />
       <RootMethod Name="GetHorizontalScrollMode" />
       <RootMethod Name="SetHorizontalScrollMode" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
+      <RootProperty Name="Stretch" />
+      <RootProperty Name="ImageSource" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
+      <RootProperty Name="IsActive" />
+    </RootType>
+    <RootType FullName="Car_Specs.Compare" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
@@ -97,19 +104,13 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Text" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Car_Specs.MainPage" />
     <RootType FullName="Car_Specs.Model" />
-    <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
-      <RootProperty Name="Stretch" />
-      <RootProperty Name="ImageSource" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
-      <RootProperty Name="IsActive" />
-    </RootType>
     <RootType FullName="Car_Specs.Specs" />
     <RootType FullName="Car_Specs.View" />
   </Roots.RootTypes>

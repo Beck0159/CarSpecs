@@ -112,6 +112,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cars.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
@@ -119,7 +120,7 @@
     <Compile Include="Compare.xaml.cs">
       <DependentUpon>Compare.xaml</DependentUpon>
     </Compile>
-    <Compile Include="JsonCalls.cs" />
+    <Compile Include="LocalStorage.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

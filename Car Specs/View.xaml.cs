@@ -34,7 +34,6 @@ namespace Car_Specs
         // create httpClient
         private HttpClient httpClient;
         // create JSONCALL
-        JsonCalls JCall;
 
         public View()
         {
@@ -51,7 +50,6 @@ namespace Car_Specs
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
             // create an instance of JCall
-            JCall = new JsonCalls();
         }
 
         /// <summary>
