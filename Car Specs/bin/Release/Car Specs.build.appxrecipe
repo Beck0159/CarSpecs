@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>CONNOR-WINDOWS</Machine>
+    <WindowsUser>Connor</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>4748fbde-d9b7-4219-a161-f6f23810cc92</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Car Specs.exe">
+      <PackagePath>Car Specs.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\packages\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_106.png">
+      <PackagePath>Assets\icon_106.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_120.png">
+      <PackagePath>Assets\icon_120.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_150.png">
+      <PackagePath>Assets\icon_150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_170.png">
+      <PackagePath>Assets\icon_170.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_20.png">
+      <PackagePath>Assets\icon_20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_33.png">
+      <PackagePath>Assets\icon_33.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_360.scale-100.png">
+      <PackagePath>Assets\icon_360.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_360.scale-240.png">
+      <PackagePath>Assets\icon_360.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_44.png">
+      <PackagePath>Assets\icon_44.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_50.png">
+      <PackagePath>Assets\icon_50.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_58.scale-140.png">
+      <PackagePath>Assets\icon_58.scale-140.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_58.scale-240.png">
+      <PackagePath>Assets\icon_58.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_600.png">
+      <PackagePath>Assets\icon_600.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_63.png">
+      <PackagePath>Assets\icon_63.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_70.png">
+      <PackagePath>Assets\icon_70.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_71.png">
+      <PackagePath>Assets\icon_71.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_768.png">
+      <PackagePath>Assets\icon_768.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_splash.png">
+      <PackagePath>Assets\icon_splash.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\icon_splash720.png">
+      <PackagePath>Assets\icon_splash720.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\SplashScreen.scale-140.png">
+      <PackagePath>Assets\SplashScreen.scale-140.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\Square71x71Logo.scale-100.png">
+      <PackagePath>Assets\Square71x71Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\StoreLogo.scale-140.png">
+      <PackagePath>Assets\StoreLogo.scale-140.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\About.xbf">
+      <PackagePath>About.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Compare.xbf">
+      <PackagePath>Compare.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Model.xbf">
+      <PackagePath>Model.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Specs.xbf">
+      <PackagePath>Specs.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\View.xbf">
+      <PackagePath>View.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Car Specs.xr.xml">
+      <PackagePath>Car Specs.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

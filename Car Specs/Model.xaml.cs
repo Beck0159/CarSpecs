@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Diagnostics;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
@@ -15,6 +17,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
+using Windows.Storage;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -28,9 +34,22 @@ namespace Car_Specs
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        // create httpClient
+        private HttpClient httpClient;
+
+        private string fileName;
+
         public Model()
         {
             this.InitializeComponent();
+
+            // create an instance of httpClient
+            httpClient = new HttpClient();
+            // Limit the max buffer size for the response so we don't get overwhelmed
+            httpClient.MaxResponseContentBufferSize = 256000;
+            httpClient.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
+
+            fileName = "cars.xml";
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -96,9 +115,69 @@ namespace Car_Specs
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+
+            // receive specific car make year and name
+            String id = e.Parameter.ToString();
+            Debug.WriteLine(id);
+            string[] subStrings = id.Split(',');
+            Debug.WriteLine(subStrings[0] + subStrings[1]);
+            title.Text = subStrings[0];
+            // Query for models
+            try
+            {
+                //
+                String responseBodyAsText;
+
+                HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/" + subStrings[0] + "/" + subStrings[1] + "?year=" + subStrings[2] + "&view=basic&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
+                response.EnsureSuccessStatusCode();
+                responseBodyAsText = await response.Content.ReadAsStringAsync();
+                responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
+
+                JObject results = JObject.Parse(responseBodyAsText);
+                Debug.WriteLine(results);
+
+
+                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
+                int i = 0;
+                foreach (var result in results["years"])
+                {
+                    string modelID = (string)result["id"];
+
+                    int a = 0;
+                    foreach (var styles in result["styles"])
+                    {
+                        var type1 = result["styles"][a];
+                        string modelStrings = (string)type1["name"];
+                        string carID = (string)type1["id"];
+                        //Debug.WriteLine("   Model: " + modelStrings + "\r\n");
+                        // dynamicly make a textblock
+                        TextBlock newTB = new TextBlock();
+                        //newTB.Name = userInput;
+                        newTB.Text = "  " + modelStrings;
+                        newTB.Tapped += Onb2Click;
+                        newTB.Tag = carID;
+                        // add the newly created TextBlock
+                        listView.Items.Add(newTB);
+                        a++;
+                    }
+
+                    i++;
+                }
+
+            }
+            catch (HttpRequestException hre)
+            {
+                //StatusText.Text = hre.ToString();
+            }
+            catch (Exception ex)
+            {
+                // For debugging
+                //StatusText.Text = ex.ToString();
+            }
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -132,5 +211,44 @@ namespace Car_Specs
         {
             Frame.Navigate(typeof(View));
         }
+
+        private void Onb2Click(object sender, TappedRoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            // get specific TextBlock 
+            TextBlock TB = sender as TextBlock;
+            Debug.WriteLine(TB.Tag);
+
+            //JCall.viewAllCars((string)TB.Tag);
+
+
+            // Send Tag to models page to use for query
+            Frame.Navigate(typeof(Specs), TB.Tag);
+
+        }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+
+            var uri = new Uri(urlpayment);
+            // Set the option to show a warning
+            var options = new Windows.System.LauncherOptions();
+            options.TreatAsUntrusted = true;
+
+            // Launch the URI with a warning prompt
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri, options);
+
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+            }
+        }
+
     }
 }

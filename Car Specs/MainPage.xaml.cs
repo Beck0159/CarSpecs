@@ -120,66 +120,7 @@ namespace Car_Specs
 
         #endregion
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // fetch JSON data from https://api.edmunds.com/api/vehicle/v2/makes?state=used&year=2014&view=basic&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3
-
-            try
-            {
-                String responseBodyAsText;
-                OutputView.Text = "";
-                //StatusText.Text = "Waiting for response ...";
-
-                HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/makes?state=used&year=2011&view=basic&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
-                response.EnsureSuccessStatusCode();
-
-                //StatusText.Text = response.StatusCode + " " + response.ReasonPhrase + Environment.NewLine;
-                responseBodyAsText = await response.Content.ReadAsStringAsync();
-                responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
-                //OutputView.Text = responseBodyAsText;
-                Debug.WriteLine(responseBodyAsText);
-
-                JObject results = JObject.Parse(responseBodyAsText);
-                Debug.WriteLine(results);
-
-                //var result = results["makes"][0];
-                //var type = result["models"][1];
-                //OutputView.Text = makes;
-
-                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
-                int i = 0;
-                foreach (var result in results["makes"])
-                {
-                  
-                    //var type = result["models"];
-                    string makes = (string)result["name"];
-                    OutputView.Text += ("Make: " + makes + "\r\n");
-
-                    int a = 0;
-                    foreach (var models in result["models"])
-                    {
-                        var type1 = result["models"][a];
-                        string modelStrings = (string)type1["name"];
-                        OutputView.Text += ("   Model: " + modelStrings+ "\r\n");
-                        a++;
-                    }
-
-                    i++;
-                    Debug.WriteLine("Make: " + makes + "  ");
-               }  
-                
-            }
-            catch (HttpRequestException hre)
-            {
-                //StatusText.Text = hre.ToString();
-            }
-            catch (Exception ex)
-            {
-                // For debugging
-                //StatusText.Text = ex.ToString();
-            }
-        }
-
+       
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(About));
@@ -198,6 +139,119 @@ namespace Car_Specs
         private void view_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(View));
+        }
+
+        private async void searchMake_Click(object sender, RoutedEventArgs e)
+        {
+
+            String makeString = make.Text;
+            String yearString = year.Text;
+            String modelString = model.Text;
+
+            listView1.Items.Clear();
+            listViewTitle.Items.Clear();
+
+            // dynamicly make a textblock
+            TextBlock newTitle = new TextBlock();
+            //newTB.Name = userInput;
+            newTitle.Text =  makeString;
+            newTitle.FontSize = 20;
+            // add the newly created TextBlock
+            listViewTitle.Items.Add(newTitle);
+            
+
+            try
+            {
+                //
+                String responseBodyAsText;
+
+                HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/" + makeString + "/" + modelString + "?year=" + yearString + "&view=basic&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
+                response.EnsureSuccessStatusCode();
+                responseBodyAsText = await response.Content.ReadAsStringAsync();
+                responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
+
+                JObject results = JObject.Parse(responseBodyAsText);
+                Debug.WriteLine(results);
+
+
+                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
+                int i = 0;
+                foreach (var result in results["years"])
+                {
+                    string modelID = (string)result["id"];
+
+                    int a = 0;
+                    foreach (var styles in result["styles"])
+                    {
+                        var type1 = result["styles"][a];
+                        string modelStrings = (string)type1["name"];
+                        string carID = (string)type1["id"];
+                        //Debug.WriteLine("   Model: " + modelStrings + "\r\n");
+                        // dynamicly make a textblock
+                        TextBlock newTB = new TextBlock();
+                        //newTB.Name = userInput;
+                        newTB.Text = "  " + modelStrings;
+                        newTB.Tapped += Onb2Click;
+                        newTB.Tag = carID;
+                        // add the newly created TextBlock
+                        listView1.Items.Add(newTB);
+                        a++;
+                    }
+
+                    i++;
+                }
+
+            }
+            catch (HttpRequestException hre)
+            {
+                //StatusText.Text = hre.ToString();
+            }
+            catch (Exception ex)
+            {
+                // For debugging
+                //StatusText.Text = ex.ToString();
+            }
+
+
+
+        }
+
+        private void Onb2Click(object sender, TappedRoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            // get specific TextBlock 
+            TextBlock TB = sender as TextBlock;
+            Debug.WriteLine(TB.Tag);
+
+            //JCall.viewAllCars((string)TB.Tag);
+
+
+            // Send Tag to models page to use for query
+            Frame.Navigate(typeof(Specs), TB.Tag);
+        }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+
+            var uri = new Uri(urlpayment);
+            // Set the option to show a warning
+            var options = new Windows.System.LauncherOptions();
+            options.TreatAsUntrusted = true;
+
+            // Launch the URI with a warning prompt
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri, options);
+
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+            }
+
+
         }
 
 

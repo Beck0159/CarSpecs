@@ -1,0 +1,61 @@
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\App.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\About.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Compare.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\MainPage.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Model.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Specs.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\View.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Car Specs.xr.xml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Car Specs.exe
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Car Specs.pdb
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\resources.pri
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\AppxManifest.xml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Car Specs.build.appxrecipe
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Newtonsoft.Json.dll
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\bin\Release\Newtonsoft.Json.xml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Car Specs.csprojResolveAssemblyReference.cache
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\App.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\App.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\About.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\About.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Compare.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Compare.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\MainPage.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\MainPage.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Model.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Model.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Specs.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Specs.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\View.g.i.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\View.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\XamlTypeInfo.g.cs
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\App.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\About.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Compare.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\MainPage.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Model.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\View.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\App.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\About.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Compare.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\MainPage.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Model.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\View.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\XamlSaveStateFile.xml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Specs.xaml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Specs.xbf
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Car Specs.exe
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Car Specs.pdb
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\Car Specs.csproj.GenerateResource.Cache
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\priconfig.xml
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\priconfig.xml.intermediate
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\layout.resfiles
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\layout.resfiles.intermediate
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\resources.resfiles
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\resources.resfiles.intermediate
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\pri.resfiles
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\pri.resfiles.intermediate
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\qualifiers.txt
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\qualifiers.txt.intermediate
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Connor\documents\visual studio 2013\Projects\Car Specs\Car Specs\obj\Release\ProjectArchitectures.txt

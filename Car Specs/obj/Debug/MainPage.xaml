@@ -8,10 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.BottomAppBar>
-        <CommandBar ClosedDisplayMode="Minimal">
+        <CommandBar Background="#FF3F3F3F" ClosedDisplayMode="Minimal">
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:ConnectionId='1' Label="About"                           />
-                <AppBarButton Label="Help"/>
+                <AppBarButton x:ConnectionId='2' Label="Donate"                             />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
@@ -31,16 +31,15 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock HorizontalAlignment="Center" Text="Car Specs" Margin="0,0,0,15" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock HorizontalAlignment="Left" Text="Car Specs" Margin="0,0,0,15" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,81">
             <StackPanel ScrollViewer.HorizontalScrollMode="Enabled">
-                <Button x:ConnectionId='4' Content="Test Call" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top"                     />
-                <Grid Width="auto" Height="77" Margin="0,0,-0.333,0">
+                <Grid Width="auto" Height="66" Margin="0,0,-0.333,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
@@ -48,25 +47,35 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Grid.Row="0" Width="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Make:"/>
                     <TextBlock Grid.Column="1" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Year"/>
-                    <TextBlock Grid.Column="2" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Make"/>
-                    <TextBox Grid.Column="1" Grid.Row="0" Height="39" Text="2005" Margin="10,38,10,0" Grid.RowSpan="2"/>
-                    <TextBox Grid.Column="0" Height="39" Text="Audi" Margin="10,38,10,0" Grid.RowSpan="2"/>
-                    <TextBox Grid.Column="2" Grid.Row="0" Text="A4" Height="39" Margin="10,38,10,0" Grid.RowSpan="2"/>
-                    <Button Grid.Column="3" x:Name="searchMake" Content="Search" Margin="0.333,28,0,-9.333" Width="11" Height="56" Grid.RowSpan="2" />
+                    <TextBlock Grid.Column="2" Grid.Row="0" Width="50" Margin="0" HorizontalAlignment="center" VerticalAlignment="Bottom" Text="Model"/>
+                    <TextBox x:Name="year" Grid.Column="1" Grid.Row="1" Height="39" Text="2005" Margin="10.167,0,9.833,0"/>
+                    <TextBox VerticalAlignment="Top" x:Name="make" Grid.Column="0" Height="39" Text="Audi" Margin="10,0,9.833,0" Grid.Row="1"/>
+                    <TextBox x:Name="model" Grid.Column="2" Grid.Row="1" Text="A4" Height="39" Margin="10.167,0,9.667,0"/>
                 </Grid>
-                <ScrollViewer Height="50" Margin="0,5,-0.333,0">
-                    <TextBlock x:Name="OutputView" FontSize="16" Height="50" TextWrapping="Wrap" />
-                </ScrollViewer>
 
-                <StackPanel Width="auto" Height="220">
-                    <ScrollViewer Height="221" Margin="0,0,-0.333,0">
-                        <ListView x:Name="listView1" Height="221">
-                            <TextBlock x:ConnectionId='5' Text="Audi  A4"                          ></TextBlock>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:ConnectionId='5' Grid.Column="0" x:Name="searchMake" Content="Search" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="342" Height="48"                          Grid.ColumnSpan="1" Margin="10,-10,9.667,-8" Grid.RowSpan="1" RenderTransformOrigin="0.508,0.908" />
+                </Grid>
+
+                <StackPanel Width="auto" Height="340" Margin="0,0,-0.333,0">
+                    <ListView x:Name="listViewTitle" Height="36" Margin="5,5,-0.333,0">
+
+                    </ListView>
+                    <ScrollViewer Height="297" Margin="0,0,-0.333,0">
+                        <ListView x:Name="listView1" Height="315">
+
                         </ListView>
                     </ScrollViewer>
 
@@ -88,8 +97,8 @@
 
             <Button Grid.Row="0" Grid.Column="0"  Name="searchBTN" Background="DarkRed" Content="Search"  Margin="0,-10,0,-10.667" Width="134" Height="84" Grid.ColumnSpan="2"/>
 
-            <Button x:ConnectionId='2' Grid.Column="0" Name="compareBTN" Content="Compare" Margin="133,-10,0,-9.667"                          Grid.ColumnSpan="3" Width="134" Height="83"/>
-            <Button x:ConnectionId='3' Grid.Column="2" Name="viewBTN" Content="View" Margin="0.333,-10,0,-9.667" Width="133" Height="83"                   />
+            <Button x:ConnectionId='3' Grid.Column="0" Name="compareBTN" Content="Compare" Margin="133,-10,0,-9.667"                          Grid.ColumnSpan="3" Width="134" Height="83"/>
+            <Button x:ConnectionId='4' Grid.Column="2" Name="viewBTN" Content="View" Margin="0.333,-10,0,-9.667" Width="133" Height="83"                   />
         </Grid>
     </Grid>
 </Page>
