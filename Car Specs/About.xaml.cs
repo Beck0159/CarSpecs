@@ -112,12 +112,7 @@ namespace Car_Specs
         {
 
         }
-
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
-        }
-
+        // Basic Navigation
         private void searchBTN_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));

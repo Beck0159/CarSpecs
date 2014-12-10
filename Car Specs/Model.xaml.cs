@@ -37,8 +37,6 @@ namespace Car_Specs
         // create httpClient
         private HttpClient httpClient;
 
-        private string fileName;
-
         public Model()
         {
             this.InitializeComponent();
@@ -48,8 +46,6 @@ namespace Car_Specs
             // Limit the max buffer size for the response so we don't get overwhelmed
             httpClient.MaxResponseContentBufferSize = 256000;
             httpClient.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
-
-            fileName = "cars.xml";
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
@@ -121,26 +117,24 @@ namespace Car_Specs
 
             // receive specific car make year and name
             String id = e.Parameter.ToString();
-            Debug.WriteLine(id);
+            // Create an array and split by ,
             string[] subStrings = id.Split(',');
-            Debug.WriteLine(subStrings[0] + subStrings[1]);
+            // set the title 
             title.Text = subStrings[0];
             // Query for models
             try
             {
-                //
+                // string for responce
                 String responseBodyAsText;
-
+                // make call
                 HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/" + subStrings[0] + "/" + subStrings[1] + "?year=" + subStrings[2] + "&view=basic&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
                 response.EnsureSuccessStatusCode();
                 responseBodyAsText = await response.Content.ReadAsStringAsync();
                 responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
-
+                // parse respoce into JObject
                 JObject results = JObject.Parse(responseBodyAsText);
-                Debug.WriteLine(results);
 
-
-                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
+                // parse JObject
                 int i = 0;
                 foreach (var result in results["years"])
                 {
@@ -151,11 +145,10 @@ namespace Car_Specs
                     {
                         var type1 = result["styles"][a];
                         string modelStrings = (string)type1["name"];
-                        string carID = (string)type1["id"];
-                        //Debug.WriteLine("   Model: " + modelStrings + "\r\n");
+                        string carID = (string)type1["id"];                 
                         // dynamicly make a textblock
                         TextBlock newTB = new TextBlock();
-                        //newTB.Name = userInput;
+                        // Add properties
                         newTB.Text = "  " + modelStrings;
                         newTB.Tapped += Onb2Click;
                         newTB.Tag = carID;
@@ -170,12 +163,11 @@ namespace Car_Specs
             }
             catch (HttpRequestException hre)
             {
-                //StatusText.Text = hre.ToString();
+                Debug.WriteLine(hre);
             }
             catch (Exception ex)
             {
-                // For debugging
-                //StatusText.Text = ex.ToString();
+                Debug.WriteLine(ex);
             }
 
         }
@@ -187,6 +179,7 @@ namespace Car_Specs
 
         #endregion
 
+        // Basic Navigation
         private void searchBTN_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
@@ -213,16 +206,9 @@ namespace Car_Specs
         }
 
         private void Onb2Click(object sender, TappedRoutedEventArgs e)
-        {
-            //throw new NotImplementedException();
-
+        {         
             // get specific TextBlock 
             TextBlock TB = sender as TextBlock;
-            Debug.WriteLine(TB.Tag);
-
-            //JCall.viewAllCars((string)TB.Tag);
-
-
             // Send Tag to models page to use for query
             Frame.Navigate(typeof(Specs), TB.Tag);
 
@@ -230,8 +216,11 @@ namespace Car_Specs
 
         private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+            // donate button
 
+            // Url
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+            // create uri
             var uri = new Uri(urlpayment);
             // Set the option to show a warning
             var options = new Windows.System.LauncherOptions();

@@ -16,6 +16,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="Opacity" />
       <RootProperty Name="Width" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
@@ -66,6 +67,7 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="FontStyle" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Opacity" />
       <RootProperty Name="Width" />
       <RootProperty Name="Foreground" />
       <RootEvent Name="SelectionChanged" />
@@ -82,6 +84,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="HorizontalScrollBarVisibility" />
+      <RootProperty Name="HorizontalScrollMode" />
       <RootProperty Name="Content" />
       <RootProperty Name="Height" />
       <RootProperty Name="Margin" />
@@ -91,9 +94,6 @@
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
       <RootProperty Name="Stretch" />
       <RootProperty Name="ImageSource" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
-      <RootProperty Name="IsActive" />
     </RootType>
     <RootType FullName="Car_Specs.Compare" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
@@ -106,11 +106,14 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
-      <RootProperty Name="TextWrapping" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootEvent Name="GotFocus" />
     </RootType>
     <RootType FullName="Car_Specs.MainPage" />
     <RootType FullName="Car_Specs.Model" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
+      <RootProperty Name="IsActive" />
+    </RootType>
     <RootType FullName="Car_Specs.Specs" />
     <RootType FullName="Car_Specs.View" />
   </Roots.RootTypes>

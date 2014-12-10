@@ -79,6 +79,13 @@ namespace Car_Specs
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            if (e.PageState != null && e.PageState.ContainsKey("Year Input"))
+            {
+                // if the pagestate exists, load 
+                year.Text = e.PageState["Year"].ToString();
+                make.Text = e.PageState["Make"].ToString();
+                model.Text = e.PageState["Model"].ToString();
+            }
         }
 
         /// <summary>
@@ -91,6 +98,10 @@ namespace Car_Specs
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+            // save state of text boxes
+            e.PageState["Year"] = year.Text;
+            e.PageState["Make"] = make.Text;
+            e.PageState["Model"] = model.Text;
         }
 
         #region NavigationHelper registration
@@ -120,7 +131,7 @@ namespace Car_Specs
 
         #endregion
 
-       
+       // basic navigation
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(About));
@@ -143,11 +154,12 @@ namespace Car_Specs
 
         private async void searchMake_Click(object sender, RoutedEventArgs e)
         {
-
+            // strings holdng text from the 3 textboxes
             String makeString = make.Text;
             String yearString = year.Text;
             String modelString = model.Text;
 
+            // Clear listview and title
             listView1.Items.Clear();
             listViewTitle.Items.Clear();
 
@@ -159,22 +171,21 @@ namespace Car_Specs
             // add the newly created TextBlock
             listViewTitle.Items.Add(newTitle);
             
-
+            // try catch making a call for data
             try
             {
-                //
+                // string to hold data
                 String responseBodyAsText;
-
+                // make call
                 HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/" + makeString + "/" + modelString + "?year=" + yearString + "&view=basic&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
                 response.EnsureSuccessStatusCode();
                 responseBodyAsText = await response.Content.ReadAsStringAsync();
                 responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
-
+                // parse respone into JObject
                 JObject results = JObject.Parse(responseBodyAsText);
                 Debug.WriteLine(results);
 
-
-                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
+                // Parse through the JObject
                 int i = 0;
                 foreach (var result in results["years"])
                 {
@@ -185,11 +196,10 @@ namespace Car_Specs
                     {
                         var type1 = result["styles"][a];
                         string modelStrings = (string)type1["name"];
-                        string carID = (string)type1["id"];
-                        //Debug.WriteLine("   Model: " + modelStrings + "\r\n");
+                        string carID = (string)type1["id"];                     
                         // dynamicly make a textblock
                         TextBlock newTB = new TextBlock();
-                        //newTB.Name = userInput;
+                        // Add properties to new textblock
                         newTB.Text = "  " + modelStrings;
                         newTB.Tapped += Onb2Click;
                         newTB.Tag = carID;
@@ -204,12 +214,11 @@ namespace Car_Specs
             }
             catch (HttpRequestException hre)
             {
-                //StatusText.Text = hre.ToString();
+                Debug.WriteLine(hre);
             }
             catch (Exception ex)
             {
-                // For debugging
-                //StatusText.Text = ex.ToString();
+                Debug.WriteLine(ex);
             }
 
 
@@ -217,23 +226,20 @@ namespace Car_Specs
         }
 
         private void Onb2Click(object sender, TappedRoutedEventArgs e)
-        {
-            //throw new NotImplementedException();
+        {        
             // get specific TextBlock 
             TextBlock TB = sender as TextBlock;
-            Debug.WriteLine(TB.Tag);
-
-            //JCall.viewAllCars((string)TB.Tag);
-
-
             // Send Tag to models page to use for query
             Frame.Navigate(typeof(Specs), TB.Tag);
         }
 
         private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+            // Donate Button
 
+            // url
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+            // cretae uri
             var uri = new Uri(urlpayment);
             // Set the option to show a warning
             var options = new Windows.System.LauncherOptions();
@@ -252,6 +258,21 @@ namespace Car_Specs
             }
 
 
+        }
+        // make textboxes empty when clicked on
+        private void make_GotFocus(object sender, RoutedEventArgs e)
+        {
+            make.Text = string.Empty;
+        }
+
+        private void year_GotFocus(object sender, RoutedEventArgs e)
+        {
+            year.Text = string.Empty;
+        }
+
+        private void model_GotFocus(object sender, RoutedEventArgs e)
+        {
+            model.Text = string.Empty;
         }
 
 
