@@ -31,7 +31,7 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.167,19,68">
-            <ScrollViewer HorizontalScrollBarVisibility="Hidden">
+            <ScrollViewer HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled">
                 <StackPanel Margin="0,0,0,0">
                     <StackPanel Height="43">
                         <TextBlock x:Name="title" FontWeight="Bold" FontStyle="Normal" Foreground="DarkRed"  Text="Car Title" Margin="0,0,0,0" FontSize="35" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="73"/>
@@ -51,6 +51,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
@@ -58,6 +59,8 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
+                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="0" x:Name="DriveWheels" Text="Drive Wheels: AWD"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="1" x:Name="Seats1" Text="Seats: 6"></TextBlock>
                         <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="0" x:Name="CarType" Text="Car Type: Sedan"></TextBlock>
                         <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="0" x:Name="Transmission" Text="Transmission: 6 speed manual"></TextBlock>
                         <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="1" x:Name="EngineInfo" Text="Engine: 1.8 turbo"></TextBlock>
@@ -88,66 +91,14 @@
                         <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="2" x:Name="Horsepower" Text="horsepower: 170"></TextBlock>
                         <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="2" x:Name="Torque" Text="torque: 166"></TextBlock>
                         <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="2" x:Name="CompressorType" Text="compressorType: turbocharger"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="DriveWheels" Text="drivenWheels: all wheel drive"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="Displacement" Text=""></TextBlock>
                     </Grid>
                     
-                    <TextBlock FontSize="19" Text="Interrior" Margin="0,0,0,10"></TextBlock>
-                    <Grid Width="auto" Height="182" Margin="0,0,-0.333,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="0" x:Name="Compr" Text="CompresionRatio: 9.3"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="0" x:Name="Cyders" Text="Cylinders: 4"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="0" x:Name="Se" Text="Size: 1.8"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="0" x:Name="es" Text="Valves: 1781.0"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="0" x:Name="Curation" Text="Configuration: inline"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="2" x:Name="Fype" Text="fuelType: premium unleaded"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="2" x:Name="Hepower" Text="horsepower: 170"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="2" x:Name="Torue" Text="torque: 166"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="2" x:Name="CompresorType" Text="compressorType: turbocharger"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="DrivWheels" Text="drivenWheels: all wheel drive"></TextBlock>
-                    </Grid>
-
-                    <TextBlock FontSize="19" Text="Exterior" Margin="0,0,0,10"></TextBlock>
-                    <Grid Width="auto" Height="182" Margin="0,0,-0.333,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="0" x:Name="Copr" Text="CompresionRatio: 9.3"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="0" x:Name="Cyers" Text="Cylinders: 4"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="0" x:Name="e" Text="Size: 1.8"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="0" x:Name="edf" Text="Valves: 1781.0"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="0" x:Name="Cration" Text="Configuration: inline"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="2" x:Name="Fye" Text="fuelType: premium unleaded"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="2" x:Name="Heower" Text="horsepower: 170"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="2" x:Name="Toue" Text="torque: 166"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="2" x:Name="CompesorType" Text="compressorType: turbocharger"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="DrvWheels" Text="drivenWheels: all wheel drive"></TextBlock>
-                    </Grid>
                     <Button Content="Read Reviews" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,-0.333,0"/>
 
                 </StackPanel>
             </ScrollViewer>
+       
         </Grid>
 
 

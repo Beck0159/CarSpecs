@@ -39,9 +39,8 @@ namespace Car_Specs
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         // string list
-        private List<string> carID;
-        private string fileName;
-
+        private List<string> carID;   
+        // string to hold id
         public string id;
         // create httpClient
         private HttpClient httpClient;
@@ -51,7 +50,6 @@ namespace Car_Specs
             this.InitializeComponent();
 
             // initialize data members
-            fileName = "cars.xml";
             carID = new List<string>();
 
             // create an instance of httpClient
@@ -127,29 +125,26 @@ namespace Car_Specs
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            // get id sent from last page
             id = e.Parameter.ToString();
-            Debug.WriteLine(id);
 
             try
             {
-                //
+                // string to hold responce
                 String responseBodyAsText;
-
+                // make call
                 HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/styles/" + id + "?view=full&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
                 response.EnsureSuccessStatusCode();
                 responseBodyAsText = await response.Content.ReadAsStringAsync();
                 responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
-
+                // parse responce into JObject
                 JObject results = JObject.Parse(responseBodyAsText);
-                Debug.WriteLine(results);
-
-
-                //Debug.WriteLine("Make:" + results["make"]["name"]);
 
                 // All data we need for the key features
                 string make = results["make"]["name"].ToString();
                 string model = results["model"]["name"].ToString();
                 string engineDisplacement = results["engine"]["size"].ToString();
+                string engineSize = results["engine"]["displacement"].ToString();
                 string engineCompresser = results["engine"]["compressorType"].ToString();
                 string mpgHighway = results["MPG"]["highway"].ToString();
                 string mpgCity = results["MPG"]["city"].ToString();
@@ -164,6 +159,7 @@ namespace Car_Specs
                 Transmission.Text = "Transmission: "+transmissionSpeeds + " speed " + transmissionType;
                 EngineInfo.Text = "Engine: "+engineDisplacement + "L " + engineCompresser;
                 MPG.Text ="MPG City/Highway: "+ mpgCity + "/" + mpgHighway;
+                Displacement.Text = "Displacement: " + engineSize;
 
                 // Data needed for engine/transmission block
                 string compressionRatio = results["engine"]["compressionRatio"].ToString();
@@ -183,67 +179,56 @@ namespace Car_Specs
                 Configuration.Text = "Configuration: " + configuration;
                 Cylinders.Text = "Cylinders: " + engineCyliners;
                 Size.Text = "Size: " + engineDisplacement;
-                Debug.WriteLine("Coooool"+make+model+engineCompresser+engineCyliners+mpgCity+mpgHighway+carType);
-
-
-
-                // call for this info https://api.edmunds.com/api/vehicle/v2/equipment/200477520?fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3
-                // interior and exterior specifications
-
-
-
+                // send id to displayPicture Method
                 displayPicture(id);
 
 
             }
             catch (HttpRequestException hre)
             {
-                //StatusText.Text = hre.ToString();
+                Debug.WriteLine(hre);
             }
             catch (Exception ex)
             {
-                // For debugging
-                //StatusText.Text = ex.ToString();
+                Debug.WriteLine(ex);
             }
 
         }
 
         public async void displayPicture(string id)
         {
-            Debug.WriteLine("Display Image");
-
+           // try catch, recieving data
             try
             {
-
+                // string to hold responce
                 String responseBodyAsTextImage;
-
+                // make call
                 HttpResponseMessage response1 = await httpClient.GetAsync("https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=" + id + "&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
                 response1.EnsureSuccessStatusCode();
                 responseBodyAsTextImage = await response1.Content.ReadAsStringAsync();
                 responseBodyAsTextImage = responseBodyAsTextImage.Replace("<br>", Environment.NewLine); // Insert new lines
                 Debug.WriteLine(responseBodyAsTextImage);
-                
+                // parse responce into JArray
                 JArray imageResults = JArray.Parse(responseBodyAsTextImage);
-                Debug.WriteLine(imageResults);
-
+                // string to hold image source
                 string imageSource = imageResults[0]["photoSrcs"][1].ToString();
-                Debug.WriteLine(imageSource);
-
+                // URI of the picture
                 Uri uri = new Uri("http://media.ed.edmunds-media.com"+imageSource+"", UriKind.Absolute);
+                // diplay image
                 imagePlace.ImageSource = new BitmapImage(
                     new Uri("http://media.ed.edmunds-media.com"+imageSource+"", UriKind.Absolute)
                 );
+                // stop the progress ring
                 ProgressRing.IsActive = false;
 
             }
             catch (HttpRequestException hre)
             {
-                //StatusText.Text = hre.ToString();
+                Debug.WriteLine(hre);
             }
             catch (Exception ex)
             {
-                // For debugging
-                Debug.WriteLine( ex.ToString());
+                Debug.WriteLine(ex);
             }
 
         }
@@ -255,6 +240,7 @@ namespace Car_Specs
 
         #endregion
 
+        // Basic Navigation
         private void searchBTN_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
@@ -276,11 +262,8 @@ namespace Car_Specs
 
             if (id != null)
             {
-                //carID.Add(id);
-                //WriteData();
-                //LocalStorage.WriteXML(id);
+                // send ID to writeXML
                 WriteXML(id);
-
 
                 // display toast message
                     var toastNotifier = ToastNotificationManager.CreateToastNotifier();
@@ -296,21 +279,22 @@ namespace Car_Specs
 
         public class CarID
         {
+            // Class CarID which hold only a string ID
             public String ID;
         }
 
         public async static void WriteXML(string id)
         {
-
+            // Create lists
             List<CarID> carID;
             List<CarID> test;
             string fileName = "ID.XML";
             string newID = null;
-
+            // New Instance of a list
             carID = new List<CarID>();
       
 
-            // Get current List 
+            // Get current List, will fail if nothing is added
             // Add New ID To List
             var deserializer = new DataContractSerializer(typeof(List<CarID>));
 
@@ -324,16 +308,11 @@ namespace Car_Specs
                 using (StreamReader reader = new StreamReader(stream))
                 {
 
-                    //content = await reader.ReadToEndAsync();
+                    // Save it to the list
                     test = ((List<CarID>)deserializer.ReadObject(stream));
                     
-                }
-                Debug.WriteLine("Stored Car ID'S " + test[0].ID);
-                Debug.WriteLine("Stored Car ID'S " + test[1].ID);
-         
-
-                //Debug.WriteLine(content);
-
+                }             
+                // set the new id
                 newID = test[0].ID;
 
             }
@@ -343,23 +322,27 @@ namespace Car_Specs
                 Debug.WriteLine(ex.ToString());
             }
 
+            // Create new lists with old and new id
+            // this makes it so only 2 items will ever be stored at once
             CarID overview = new CarID();
             overview.ID = id;
 
             CarID testing = new CarID();
             testing.ID = newID;
 
+            // add the CarIDs
             carID.Add(overview);
             carID.Add(testing);
 
             // Save List
             try
            {
+                // Create a serializer
                 var serializer = new DataContractSerializer(typeof(List<CarID>));
 
                 using (var stream = await ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(fileName, CreationCollisionOption.ReplaceExisting))
                 {
-
+                    // Write object to memory
                     serializer.WriteObject(stream, carID);
                 }
 
@@ -373,7 +356,7 @@ namespace Car_Specs
             }
 
         }
-
+        // navigation
         private void view_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(View));
@@ -381,8 +364,11 @@ namespace Car_Specs
 
         private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+            // Donate button
 
+            // donate url
+            string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
+            // create uri
             var uri = new Uri(urlpayment);
             // Set the option to show a warning
             var options = new Windows.System.LauncherOptions();

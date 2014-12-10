@@ -33,7 +33,7 @@ namespace Car_Specs
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         // create httpClient
         private HttpClient httpClient;
-        // create JSONCALL
+       
 
         public View()
         {
@@ -49,7 +49,6 @@ namespace Car_Specs
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
-            // create an instance of JCall
         }
 
         /// <summary>
@@ -82,6 +81,11 @@ namespace Car_Specs
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            // loadstate if exists
+            if (e.PageState != null && e.PageState.ContainsKey("Year Input"))
+            {
+                yearInput.Text = e.PageState["Year Input"].ToString();
+            }
         }
 
         /// <summary>
@@ -94,6 +98,9 @@ namespace Car_Specs
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+          // save year text
+            e.PageState["Year Input"] = yearInput.Text;
+
         }
 
         #region NavigationHelper registration
@@ -114,6 +121,7 @@ namespace Car_Specs
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -123,6 +131,7 @@ namespace Car_Specs
 
         #endregion
 
+        // Basic Navigation
         private void searchBTN_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
@@ -145,50 +154,49 @@ namespace Car_Specs
 
         private async void searchMake_Click(object sender, RoutedEventArgs e)
         {
-            // fetch JSON data from hyearInput.Text = "";
+            // Clear Listviews
             listView1.Items.Clear();
             String userInput = yearInput.Text;
 
             try
             {
+                // string responce
                 String responseBodyAsText;
-                
+                // make the call
                 HttpResponseMessage response = await httpClient.GetAsync("https://api.edmunds.com/api/vehicle/v2/makes?year=" + userInput + "&view=basic&fmt=json&api_key=w7te8pq2racmgdpgp5zxa3b3");
                 response.EnsureSuccessStatusCode();
                 responseBodyAsText = await response.Content.ReadAsStringAsync();
                 responseBodyAsText = responseBodyAsText.Replace("<br>", Environment.NewLine); // Insert new lines
-
+                // Parse responce into JObject
                 JObject results = JObject.Parse(responseBodyAsText);
-                Debug.WriteLine(results);
 
-
-                // example code http://www.webthingsconsidered.com/2013/08/09/adventures-in-json-parsing-with-c/
+                // Parse JObject
                 int i = 0;
                 foreach (var result in results["makes"])
                 {
-
-                    //var type = result["models"];
+                    // Create and Display makes
                     string makes = (string)result["name"];
                     // dynamicly make a textblock
                     TextBlock newTB1 = new TextBlock();
+                    // Add properties
                     newTB1.Name = makes;
                     newTB1.Text = makes;
                     newTB1.FontSize = 20;
                     // add the newly created TextBlock
                     listView1.Items.Add(newTB1);
-                    //OutputView.Text += ("Make: " + makes + "\r\n");
 
                     int a = 0;
                     foreach (var models in result["models"])
                     {
+                        // Create and Display Models for each make
                         var type1 = result["models"][a];
                         string modelStrings = (string)type1["name"];
                         var years = type1["years"][0];
 
                         string modelID = (string)years["id"];
-                        Debug.WriteLine("   Model: " + modelStrings + "\r\n");
                         // dynamicly make a textblock
                         TextBlock newTB = new TextBlock();
+                        // Add porperties
                         newTB.Name = userInput;
                         newTB.Text = "  " + modelStrings;
                         newTB.Tapped += Onb2Click;
@@ -200,31 +208,25 @@ namespace Car_Specs
                     }
 
                     i++;
-                    Debug.WriteLine("Make: " + makes + "  ");
                 }
 
             }
             catch (HttpRequestException hre)
             {
-                //StatusText.Text = hre.ToString();
+                Debug.WriteLine(hre);
             }
             catch (Exception ex)
             {
-                // For debugging
-                //StatusText.Text = ex.ToString();
+                Debug.WriteLine(ex);
             }
 
         }
 
         private void Onb2Click(object sender, TappedRoutedEventArgs e)
         {
-            //throw new NotImplementedException();
-
             // get specific TextBlock 
             TextBlock TB = sender as TextBlock;
-            Debug.WriteLine(TB.Tag);
-
-            //Call.viewAllCars((string)TB.Tag);
+            // Create string names to hold tag text and name to be parsed on models page
             String names = ""+TB.Tag+","+TB.Text+","+TB.Name;
 
 
@@ -235,8 +237,9 @@ namespace Car_Specs
 
         private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
+            // string url
             string urlpayment = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WZF87T9F6GY5L";
-
+            // create a uri
             var uri = new Uri(urlpayment);
             // Set the option to show a warning
             var options = new Windows.System.LauncherOptions();
@@ -254,5 +257,12 @@ namespace Car_Specs
                 // URI launch failed
             }
         }
+        // make textboxes empty when clicked
+        private void yearInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            yearInput.Text = string.Empty;
+        }
+
+        
     }
 }

@@ -29,26 +29,67 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="1" Opacity="0" x:Name="ContentRoot" Margin="19,9.167,19,68">
+            <StackPanel Margin="0,0,0,0">
+                <StackPanel Height="43">
+                    <TextBlock x:Name="CompareTitle1" FontWeight="Bold" FontStyle="Normal"  Text="Compare" Margin="0,0,0,0" FontSize="35" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="73"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,15,0,0"  Height="56" >
+                    <TextBlock Opacity="0" TextWrapping="Wrap" x:Name="HelpMessage" FontStyle="Normal"  Text="To add cars to this page navigate to a car and press the compare button." Margin="0,0,0,0" FontSize="20" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="73"/>
+                    <TextBlock Opacity="0" TextWrapping="Wrap" x:Name="HelpMessage2" FontStyle="Normal"  Text="Add another car to compare." Margin="0,-80,0,0" FontSize="20" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="73"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        
+        
         <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.167,19,68">
-            <ScrollViewer HorizontalScrollBarVisibility="Hidden">
+        <Grid Grid.Row="1" Opacity="1" x:Name="ContentRoot2" Margin="19,9.167,19,68">
+            <ScrollViewer HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled">
                 <StackPanel Margin="0,0,0,0">
                     <StackPanel Height="43">
                         <TextBlock x:Name="CompareTitle" FontWeight="Bold" FontStyle="Normal"  Text="Compare" Margin="0,0,0,0" FontSize="35" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="73"/>
                     </StackPanel>
 
-                    <StackPanel Height="129" Margin="0,0,0,0">
-                        <StackPanel.Background>
-                            <ImageBrush x:Name="imagePlace" Stretch="UniformToFill" ImageSource="" ></ImageBrush>
-                        </StackPanel.Background>
-                        <ProgressRing x:Name="ProgressRing" IsActive="True"/>
-                      
-                    </StackPanel>
-
-
-                    <TextBlock Margin="0,5,0,5" FontSize="19" HorizontalAlignment="Center" Text="Engine/Transmission"></TextBlock>
-                    <Grid Width="auto" Height="182" Margin="0,5,-0.333,0">
+           
+                    <Grid Height="190" Margin="0,0,0,0">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="25"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>                        
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="1">
+                            <StackPanel.Background>
+                                <ImageBrush x:Name="CarPic1" Stretch="UniformToFill" ImageSource="" ></ImageBrush>
+                            </StackPanel.Background>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="1">
+                            <StackPanel.Background>
+                                <ImageBrush x:Name="CarPic2" Stretch="UniformToFill" ImageSource="" ></ImageBrush>
+                            </StackPanel.Background>
+                        </StackPanel>
+                        <TextBlock TextAlignment="Center" FontSize="20" Grid.Row="0" Grid.Column="0" x:Name="MakeTitle1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center" FontSize="20"  Grid.Row="0" Grid.Column="2" x:Name="MakeTitle2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center" FontSize="20" Grid.Row="2" Grid.Column="0" x:Name="Year1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center" FontSize="20"  Grid.Row="2" Grid.Column="2" x:Name="Year2" Text=""></TextBlock>
+                    </Grid>
+
+
+                    <TextBlock Margin="0,5,0,5" FontSize="19" HorizontalAlignment="Center" Text="Key Specs"></TextBlock>
+                    <Grid Width="auto" Height="307" Margin="0,5,-0.333,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
@@ -63,99 +104,49 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="0" x:Name="FuelType1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="0" x:Name="HorsePower1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="0" x:Name="Torque1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="0" x:Name="Cylinders1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="0" x:Name="Drivewheels1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="0" x:Name="Conficuration1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="2" x:Name="FuelType2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="2" x:Name="Horsepower2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="2" x:Name="Torque2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="2" x:Name="Cylinders2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="Drivewheels2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="2" x:Name="Conficuration2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="1" x:Name="q1q" Text="fuelType:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="1" x:Name="q2q" Text="horsepower:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="1" x:Name="q3q" Text="torque:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="1" x:Name="q4q" Text="Cylinders:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="1" x:Name="q5q" Text="drivenWheels:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="1" x:Name="q6q" Text="Configuration:"></TextBlock>
+                        <TextBlock TextAlignment="Center" FontSize="17" Grid.Row="0" Grid.Column="0" x:Name="CarTitle1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center" FontSize="17"  Grid.Row="0" Grid.Column="2" x:Name="CarTitle2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="0" x:Name="FuelType1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="0" x:Name="Horsepower1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="0" x:Name="Torque1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="0" x:Name="Cylinders1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="0" x:Name="Drivewheels1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="6" Grid.Column="0" x:Name="Configuration1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="7" Grid.Column="0" x:Name="MPG1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="8" Grid.Column="0" x:Name="CompressorType1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="9" Grid.Column="0" x:Name="Valves1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="10" Grid.Column="0" x:Name="CompressionRatio1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="11" Grid.Column="0" x:Name="CarType1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="12" Grid.Column="0" x:Name="TransmissionType1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="13" Grid.Column="0" x:Name="Speeds1" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="2" x:Name="FuelType2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="2" x:Name="Horsepower2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="2" x:Name="Torque2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="Cylinders2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="2" x:Name="Drivewheels2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="6" Grid.Column="2" x:Name="Configuration2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="7" Grid.Column="2" x:Name="MPG2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="8" Grid.Column="2" x:Name="CompressorType2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="9" Grid.Column="2" x:Name="Valves2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="10" Grid.Column="2" x:Name="CompressionRatio2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="11" Grid.Column="2" x:Name="CarType2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="12" Grid.Column="2" x:Name="TransmissionType2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="13" Grid.Column="2" x:Name="Speeds2" Text=""></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="1" x:Name="q1q" Text="fuelType"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="1" x:Name="q2q" Text="horsepower"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="1" x:Name="q3q" Text="torque"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="1" x:Name="q4q" Text="Cylinders"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="1" x:Name="q5q" Text="drivenWheels"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="6" Grid.Column="1" x:Name="q6q" Text="Configuration"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="7" Grid.Column="1" x:Name="q7q" Text="MPG City/Highway"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="8" Grid.Column="1" x:Name="q8q" Text="Compressor Type"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="9" Grid.Column="1" x:Name="q9q" Text="Total Valves"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="10" Grid.Column="1" x:Name="q10q" Text="Compression Ratio"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="11" Grid.Column="1" x:Name="q11q" Text="Car Type"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="12" Grid.Column="1" x:Name="q12q" Text="Transmission Type"></TextBlock>
+                        <TextBlock TextAlignment="Center"  Grid.Row="13" Grid.Column="1" x:Name="q13q" Text="Speeds"></TextBlock>
                     </Grid>
 
-                    <TextBlock Margin="0,5,0,5" FontSize="19" HorizontalAlignment="Center" Text="Engine/Transmission"></TextBlock>
-                    <Grid Width="auto" Height="182" Margin="0,5,-0.333,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="0" x:Name="q1FuelType1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="0" x:Name="q1HorsePower1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="0" x:Name="q1Torque1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="0" x:Name="q1Cylinders1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="0" x:Name="q1Drivewheels1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="0" x:Name="q1Conficuration1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="2" x:Name="q1FuelType2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="2" x:Name="q1Horsepower2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="2" x:Name="q1Torque2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="2" x:Name="q1Cylinders2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="q1Drivewheels2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="2" x:Name="q1Conficuration2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="1" x:Name="q11q" Text="fuelType:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="1" x:Name="q12q" Text="horsepower:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="1" x:Name="q13q" Text="torque:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="1" x:Name="q14q" Text="Cylinders:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="1" x:Name="q15q" Text="drivenWheels:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="1" x:Name="q16q" Text="Configuration:"></TextBlock>
-                    </Grid>
-
-                    <TextBlock Margin="0,5,0,5" FontSize="19" HorizontalAlignment="Center" Text="Engine/Transmission"></TextBlock>
-                    <Grid Width="auto" Height="182" Margin="0,5,-0.333,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="0" x:Name="FulType1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="0" x:Name="HosePower1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="0" x:Name="Toque1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="0" x:Name="Cyinders1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="0" x:Name="Drvewheels1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="0" x:Name="Coficuration1" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="2" x:Name="FulType2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="2" x:Name="Hosepower2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="2" x:Name="Trque2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="2" x:Name="Clinders2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="2" x:Name="Divewheels2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="2" x:Name="Cnficuration2" Text=""></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="0" Grid.Column="1" x:Name="q" Text="fuelType:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="1" Grid.Column="1" x:Name="asfd" Text="horsepower:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="2" Grid.Column="1" x:Name="fsdf" Text="torque:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="3" Grid.Column="1" x:Name="sdfsf" Text="Cylinders:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="4" Grid.Column="1" x:Name="sdfdsf" Text="drivenWheels:"></TextBlock>
-                        <TextBlock TextAlignment="Center"  Grid.Row="5" Grid.Column="1" x:Name="sdfsd" Text="Configuration:"></TextBlock>
-                    </Grid>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

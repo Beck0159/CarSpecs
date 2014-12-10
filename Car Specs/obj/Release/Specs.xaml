@@ -31,7 +31,7 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.167,19,68">
-            <ScrollViewer Margin="0,0,0,10" HorizontalScrollBarVisibility="Hidden">
+            <ScrollViewer HorizontalScrollBarVisibility="Hidden">
                 <StackPanel Margin="0,0,0,0">
                     <StackPanel Height="43">
                         <TextBlock x:Name="title" FontWeight="Bold" FontStyle="Normal" Foreground="DarkRed"  Text="Car Title" Margin="0,0,0,0" FontSize="35" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="73"/>
